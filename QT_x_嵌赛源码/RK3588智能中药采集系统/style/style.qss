@@ -1,0 +1,159 @@
+/* 中药材智能识别系统 - 深色检测风格（参考 YOLO 演示界面） */
+
+QMainWindow, QWidget#centralWidget {
+    background-color: #1b1f2a;
+    color: #e5e7eb;
+    font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+    font-size: 16px;
+}
+
+QFrame#topBar, QFrame#bottomBar {
+    background-color: #252b3a;
+    border: 1px solid #3b4252;
+    border-radius: 8px;
+}
+
+QLabel#labelTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #60a5fa;
+    padding: 4px 8px;
+}
+
+QLabel#labelStatus {
+    font-size: 16px;
+    color: #cbd5e1;
+    padding: 4px 12px;
+    min-width: 180px;
+}
+
+QFrame#leftPanel, QFrame#rightPanel {
+    background-color: #252b3a;
+    border: 1px solid #3b4252;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+PreviewLabel, QLabel#labelPreview {
+    background-color: #111827;
+    color: #9ca3af;
+    border: 2px solid #4b5563;
+    border-radius: 8px;
+    min-height: 360px;
+}
+
+QLabel#labelDrugName, QLabel#labelCategory {
+    background-color: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #93c5fd;
+    min-height: 36px;
+}
+
+QTextEdit#textEditResult,
+QTextEdit#textEditChat {
+    background-color: #111827;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 15px;
+    color: #e5e7eb;
+}
+
+QTextEdit#textEditChat {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+QPushButton#primaryButton,
+QPushButton#secondaryButton,
+QPushButton#bottomButton,
+QPushButton#dangerButton {
+    min-width: 80px;
+    min-height: 45px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+QPushButton#primaryButton {
+    background-color: #7c3aed;
+    color: #ffffff;
+    border: 1px solid #6d28d9;
+}
+
+QPushButton#primaryButton:hover {
+    background-color: #6d28d9;
+}
+
+QPushButton#primaryButton:pressed {
+    background-color: #5b21b6;
+}
+
+QPushButton#primaryButton:disabled {
+    background-color: #4c1d95;
+    border-color: #4c1d95;
+    color: #c4b5fd;
+}
+
+QPushButton#secondaryButton {
+    background-color: #374151;
+    color: #f9fafb;
+    border: 1px solid #4b5563;
+}
+
+QPushButton#secondaryButton:hover {
+    background-color: #4b5563;
+}
+
+QPushButton#secondaryButton:pressed {
+    background-color: #6b7280;
+}
+
+QPushButton#bottomButton {
+    background-color: #374151;
+    color: #f9fafb;
+    border: 1px solid #4b5563;
+    min-width: 120px;
+}
+
+QPushButton#bottomButton:hover {
+    background-color: #4b5563;
+}
+
+QPushButton#bottomButton:pressed {
+    background-color: #6b7280;
+}
+
+QPushButton#dangerButton {
+    background-color: #dc2626;
+    color: #ffffff;
+    border: 1px solid #b91c1c;
+    min-width: 120px;
+}
+
+QPushButton#dangerButton:hover {
+    background-color: #b91c1c;
+}
+
+QPushButton#dangerButton:pressed {
+    background-color: #991b1b;
+}
+
+QMessageBox, QDialog {
+    background-color: #252b3a;
+    color: #e5e7eb;
+}
+
+QLineEdit, QListWidget {
+    min-height: 36px;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 4px 8px;
+    background-color: #111827;
+    color: #e5e7eb;
+}

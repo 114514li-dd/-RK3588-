@@ -1,0 +1,62 @@
+#include "gouqiprompt.h"
+
+#include <QDir>
+#include <QFile>
+#include <QTemporaryFile>
+
+namespace {
+const char kPromptResource[] = ":/prompts/gouqi_recognition.txt";
+
+const char kFixedGouqiPrompt[] =
+    "你是专业的中药材识别助手，请严格按照以下步骤分析图片中的物体：\n"
+    "1.  先判断图片中是否存在枸杞，需重点核对以下特征：\n"
+    "    - 外观：呈纺锤形或椭圆形，表面鲜红色/暗红色，有不规则皱纹，一端有小凸起的花柱残迹\n"
+    "    - 质地：果皮柔韧、果肉柔软，种子扁肾形，长6-21mm，直径3-10mm\n"
+    "    - 排除干扰：排除红枣、圣女果、葡萄干等外形相似物品\n"
+    "2.  若识别为枸杞，按以下格式输出信息：\n"
+    "    【药品名称】宁夏枸杞（Lycium barbarum L.）\n"
+    "    【药材分类】补阴药\n"
+    "    【性味归经】甘，平。归肝、肾经\n"
+    "    【功效】滋补肝肾，益精明目\n"
+    "    【用法用量】6-12g，煎服；也可泡水、煲汤\n"
+    "    【禁忌】脾虚便溏者慎用\n"
+    "    【真伪鉴别要点】（列出图片中枸杞的关键特征）\n"
+    "    【温度】10~20°C\n"
+    "    【相对温度】45~60%"
+    "3.  若不是枸杞，直接输出：“未识别到枸杞，请重新拍摄，确保主体清晰、背景干净”";
+}
+
+QString GouqiPrompt::text()
+{
+    QFile file(QString::fromLatin1(kPromptResource));
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        const QString content = QString::fromUtf8(file.readAll()).trimmed();
+        if (!content.isEmpty()) {
+            return content;
+        }
+    }
+    return QString::fromUtf8(kFixedGouqiPrompt);
+}
+
+QString GouqiPrompt::writeToTempFile()
+{
+    const QString prompt = text();
+
+    QTemporaryFile tempFile;
+    tempFile.setAutoRemove(false);
+    if (!tempFile.open()) {
+        return QString();
+    }
+
+    tempFile.write(prompt.toUtf8());
+    tempFile.close();
+    return tempFile.fileName();
+}
+
+QStringList GouqiPrompt::buildInferArguments(const QString &imagePath)
+{
+    const QString promptFile = writeToTempFile();
+    return QStringList()
+           << QStringLiteral("--image") << QDir::toNativeSeparators(imagePath)
+           << QStringLiteral("--prompt-file") << QDir::toNativeSeparators(promptFile);
+}

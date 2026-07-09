@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>style/style.qss</file>
+        <file>prompts/gouqi_recognition.txt</file>
+        <file>prompts/object_recognition.txt</file>
+    </qresource>
+</RCC>

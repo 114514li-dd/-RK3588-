@@ -1,0 +1,4 @@
+# 避免 Windows 编辑后复制到 Linux 出现 $'\r': command not found
+*.sh text eol=lf
+*.pro text eol=lf
+*.bash text eol=lf

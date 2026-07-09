@@ -1,0 +1,39 @@
+model:
+  weights_pt: baizhi/runs/detect/baizhi_yolov8s_ca_v2/weights/best.pt
+  weights_onnx: baizhi/elf2/artifacts/baizhi_yolov8s_ca.onnx
+  weights_rknn: baizhi/elf2/artifacts/baizhi_yolov8s_ca_rk3588.rknn
+export:
+  imgsz: 640
+  batch: 1
+  opset: 12
+  simplify: true
+  dynamic: false
+  format: rknn
+  target_platform: rk3588
+  quant: int8
+  data: baizhi/dataset/data.yaml
+inference:
+  conf: 0.75
+  iou: 0.45
+  max_det: 10
+  min_area_ratio: 0.015
+  max_area_ratio: 0.85
+  confirm_frames: 3
+  class_names:
+    0: 白芷
+training_precision:
+  negative_ratio: 2.0
+  scene_negatives: 50
+  val_negatives: 20
+board:
+  chip: rk3588
+  runtime: rknnlite2
+  input_color: rgb
+  mean:
+  - 0
+  - 0
+  - 0
+  std:
+  - 255
+  - 255
+  - 255

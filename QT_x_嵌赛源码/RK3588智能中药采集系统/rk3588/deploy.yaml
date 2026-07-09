@@ -1,0 +1,51 @@
+# RK3588 板端部署 — 枸杞参数对齐 Windows「启动枸杞检测.bat --mode balanced」
+# Windows: conf=0.40, infer_conf=0.01, iou=0.45, max_det=5, box_shrink=0.65, infer_every=3
+
+models:
+  gouqi:
+    rknn: artifacts/gouqi_yolov8s_ca_rk3588_fp16.rknn
+    class_name: 枸杞
+    display_name: gouqi
+    # 与 Windows balanced 一致
+    conf: 0.40
+    confirm_frames: 0
+    min_area_ratio: 0.0
+    max_area_ratio: 0.0
+    large_area_ratio: 0.0
+    box_shrink: 0.65
+    max_det: 5
+    color_bgr: [0, 140, 255]
+  baizhi:
+    rknn: artifacts/baizhi_yolov8s_ca_rk3588_fp16.rknn
+    class_name: 白芷
+    display_name: baizhi
+    conf: 0.50
+    confirm_frames: 2
+    min_area_ratio: 0.02
+    max_area_ratio: 0.0
+    large_area_ratio: 0.55
+    large_area_min_conf: 0.70
+    box_shrink: 1.0
+    max_det: 5
+    color_bgr: [0, 180, 0]
+
+inference:
+  imgsz: 640
+  iou: 0.45
+  max_det: 10
+  infer_conf: 0.01
+  min_area_ratio: 0.0
+  max_area_ratio: 0.0
+  large_area_ratio: 0.0
+  large_area_min_conf: 0.0
+  max_score: 0.999
+  infer_every: 3
+  max_fps: 20.0
+  camera: "/dev/video21"
+  cam_width: 640
+  cam_height: 480
+
+board:
+  chip: rk3588
+  vendor: forlinx_elf2
+  runtime: rknnlite2

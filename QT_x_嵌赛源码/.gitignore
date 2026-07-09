@@ -1,0 +1,80 @@
+# ============================================================
+# 嵌赛作品源码 - Git 忽略规则
+# ============================================================
+
+# --- 编译产物 ---
+*.o
+*.obj
+*.exe
+*.dll
+*.a
+*.so
+*.so.*
+*.crf
+*.d
+*.dep
+*.axf
+*.hex
+*.lst
+*.map
+*.lnp
+*.sct
+*.htm
+*.elf
+
+# --- Qt 生成文件 ---
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+moc_predefs.h
+*.pro.user
+*.pro.user.*
+.qmake.stash
+object_script.*
+Makefile
+Makefile.Debug
+Makefile.Release
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# --- IDE ---
+.vscode/
+.idea/
+*.dbgconf
+*.uvguix.*
+JLinkLog.txt
+*.ini
+
+# --- 训练输出（非源码） ---
+runs/
+*.log
+train_*.log
+
+# --- 数据集图片（仅保留目录结构说明） ---
+*.jpg
+*.jpeg
+*.png
+*.bmp
+
+# --- 权重文件注意 ---
+# *.pt 和 *.rknn 默认不忽略（项目核心产出物）
+# 如需忽略大模型文件，取消下面注释：
+# *.pt
+# *.rknn
+# *.onnx
+
+# --- 系统文件 ---
+.DS_Store
+Thumbs.db
+desktop.ini
